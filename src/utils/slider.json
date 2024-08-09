@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Butter Chicke",
+        "price": 500,
+        "detail": "Butter Chicken: Tender marinated chicken simmered in a rich, creamy tomato gravy.",
+        "image": "./butterchicken.png"
+
+    },
+
+    {
+        "name": "Chicken Biryani",
+        "price": 200,
+        "detail": "Chicken Biryani: Aromatic basmati rice layered with spiced, tender chicken, cooked to perfection.",
+        "image": "./chicken bir.png"
+    },
+
+    {
+        "name": "Chicken Roasted Breast",
+        "price": 300,
+        "detail": "Chicken Breast: Juicy, lean chicken breast seasoned and cooked to tender perfection.",
+        "image": "./chicken breast.png"
+    },
+
+    {
+        "name": "Crispy Chicken",
+        "price": 250,
+        "detail": "Crispy Chicken: Golden, crunchy coating encasing tender, flavorful chicken.",
+        "image": "./chicken cryspi.png"
+    },
+
+    {
+        "name": "Chicken Wings",
+        "price": 400,
+        "detail": "Chicken Wings: Succulent, juicy wings coated in a perfect blend of spices and sauces.",
+        "image": "./chicken wings.jpg"
+    }
+]

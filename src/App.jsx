@@ -1,24 +1,52 @@
-import React from "react";
-import Header from "./components/Header/Header";
-import Hero from "./components/Hero/Hero";
-import Companies from "./components/Companies/Companies";
-import MenuItems from "./components/MenuItems/MenuItems";
-import Value from "./components/Value/Value";
-import Contact from "./components/Contact/Contact";
-import GetStarted from "./components/GetStarted/GetStarted";
-import Footer from "./components/Footer/Footer";
+import React, { Suspense, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Website from "./pages/Website";
+import Layout from "./components/Layout/Layout";
+import './App.css';
+import ManuItem from "./pages/MenuItem/ManuItem";
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Menu from "./pages/Menu/Menu";
+import { MantineProvider } from "@mantine/core";
+import UserDetailContext from "./context/UserDetailContext";
+import Bookings from "./pages/Bookings/Bookings";
+import Favourites from "./pages/Favourites/Favourites";
+
 const App = () => {
+  const queryClient = new QueryClient();
+
+  const [userDetails, setUserDetails] = useState({
+    favourites: [],
+    orders: [],
+    token: null
+  });
+
   return (
-    <div className="App">
-      <Header />
-      <Hero />
-      <Companies />
-      <MenuItems />
-      <Value />
-      <Contact />
-      <GetStarted />
-      <Footer />
-    </div>
+    <UserDetailContext.Provider value={{userDetails, setUserDetails}}>
+      <QueryClientProvider client={queryClient}>
+        <MantineProvider>
+          <BrowserRouter>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Routes>
+                <Route element={<Layout />}>
+                  <Route path="/" element={<Website />} />
+                  <Route path="menuitem">
+                    <Route index element={<ManuItem />} />
+                    <Route path=":menuitemId" element={<Menu />} />
+                  </Route>
+                  <Route path="/orders" element={<Bookings />} />
+                  <Route path="/favourites" element={<Favourites />} />
+                </Route>
+              </Routes>
+            </Suspense>
+          </BrowserRouter>
+          <ToastContainer />
+        </MantineProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </UserDetailContext.Provider>
   );
 };
 

@@ -1,0 +1,52 @@
+/* Container for the menu */
+.menu {
+    position: relative; /* Ensure the menu is positioned relative to its container */
+  }
+  
+  /* Style for the Avatar (user picture) */
+  .avatar {
+    cursor: pointer; /* Indicate the avatar is clickable */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transformation and shadow */
+  }
+  
+  .avatar:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  }
+  
+  /* Style for the dropdown menu */
+  .menu-dropdown {
+    background: #ffffff; /* White background for the dropdown */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Shadow for dropdown */
+    padding: 0; /* Remove default padding */
+    position: absolute; /* Position it absolutely relative to the menu container */
+    top: 100%; /* Position it below the menu target */
+    right: 0; /* Align it to the right of the target */
+    z-index: 1000; /* Ensure it appears above other content */
+    min-width: 150px; /* Minimum width of the dropdown */
+    width: auto; /* Adjust width to fit content */
+    text-align: center; /* Center align text */
+  }
+  
+  /* Style for each menu item */
+  .menu-item {
+    display: block; /* Make each item a block element to ensure vertical stacking */
+    padding: 0.5rem 1rem; /* Padding inside each menu item */
+    font-size: 1rem; /* Font size */
+    color: #333; /* Text color */
+    transition: background-color 0.2s; /* Smooth background color transition */
+    border: none; /* Remove border lines */
+  }
+  
+  /* Hover effect for menu items */
+  .menu-item:hover {
+    background-color: #f0f0f0; /* Light grey background on hover */
+  }
+  
+  /* Style for the logout item */
+  .menu-item-logout {
+    color: red; /* Red text color for logout */
+    font-weight: bold; /* Bold text for emphasis */
+  }
+  

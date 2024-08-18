@@ -4,8 +4,39 @@ import "swiper/css";
 import "./MenuItems.css";
 import data from "../../utils/slider.json";
 import { sliderSettings } from "../../utils/common";
+import MenuCard from "../MenuCard/MenuCard";
+import useProperties from "../../hooks/useProperties";
+import { PuffLoader } from "react-spinners";
 
 const MenuItems = () => {
+  
+  const {data, isError, isLoading} = useProperties();
+
+   
+  if(isError){
+    return(
+      <div className="wrapper">
+        <span> Error while fetching the data</span>
+      </div>
+    )
+   }
+
+   if(isLoading){
+    return(
+      <div className="wrapper flexCenter" style={{height: "60vh"}}>
+        <PuffLoader 
+        height="80"
+        width="80"
+        radius={1}
+        color="#4066ff"
+        aria-label="puff-loading"/>
+
+      </div>
+    )
+  }
+  
+
+
   return (
     <section className="r-wrapper">
       <div className="paddings innerWidth r-container">
@@ -16,19 +47,10 @@ const MenuItems = () => {
 
         <Swiper {...sliderSettings}>
           <SliderButtons />
-          {data.map((card, i) => (
+          {/* slider  */}
+          {data.slice(0, 8).map((card, i) => (
             <SwiperSlide key={i}>
-              <div className="flexColStart r-card">
-                <img src={card.image} alt="items" />
-
-                <span className="secondaryText r-price">
-                  <span style={{ color: "orange" }}>$</span>
-                  <span>{card.price}</span>
-                </span>
-
-                <span className="primaryText">{card.name}</span>
-                <span className="secondaryText">{card.detail}</span>
-              </div>
+              <MenuCard  card={card}/>
             </SwiperSlide>
           ))}
         </Swiper>
